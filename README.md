@@ -9,8 +9,6 @@ This Repository is to pratice react daily
 2. How to create functional components
 3. How to use props 
 
-
-1. 
 ### Project Setup:
 Used Vite for faster development experience compared to Create React App.
 
