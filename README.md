@@ -1,7 +1,7 @@
 This Repository is to pratice react daily
 
 
------------Day-1 (20-01-2026)----------------
+                                       ###Day-1 (20-01-2026)           
 
 ### Topics Covered:
 
