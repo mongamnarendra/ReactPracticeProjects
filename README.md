@@ -21,6 +21,7 @@ Used Vite for faster development experience compared to Create React App.
 **To run the app:**
 ```bash
 npm run dev
+```
 
 
 
