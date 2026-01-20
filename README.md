@@ -5,9 +5,9 @@ This Repository is to pratice react daily
 
 ### Topics Covered:
 
-1.How to create a project
-2.How to create functional components
-3.How to use props 
+1. How to create a project
+2. How to create functional components
+3. How to use props 
 
 
 1. 
