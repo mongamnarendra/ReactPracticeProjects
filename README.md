@@ -105,4 +105,75 @@ const [state, setState] = useState(initialValue);
 
 
 
+## 🚀 Day-2 (21-01-2026) - Controlled & Uncontrolled Form
+
+### Topics Covered:-
+1. Controlled Form
+2. Uncontrolled Form
+3. Conditional Rendering
+
+### Controlled Form :-
+Controlled form are the form where react state controls the input values
+
+```js
+const [user,setUser] = useState({
+  name:"",
+})
+
+const handleChange = (e)=>{
+  setUser({
+    ...user,
+    [e.target.name] :e.target.value
+  })
+}
+```
+
+```html
+<input type="text",name="username",value="{user.username}",onChange={handleChange}>
+<br>
+```
+
+### Uncontrolled Form :-
+Where DOM controls the input values , not react
+- uses `useRef()`
+- used for quick prototype
+
+```js
+const nameRef= useRef();
+const handleSubmit = (e)=>{
+  e.preventDefault();
+  console.log(nameRef.current.value)
+}
+```
+```html
+<input type = "name" ref={nameRef}>
+<button onClick={handleSubmit}>Submit</button>
+```
+
+
+### Conditional Rendering
+
+-it means generating ui based on the condition
+Use Cases:-
+1. Login / Logout Button 
+2. Show dashboard only if logged in
+
+```jsx
+      <div>
+        {isLoggedIn ? (
+          <button onClick={() => setIsLoggedIn(false)}>
+            Logout
+          </button>
+        ) : (
+          <button onClick={() => setIsLoggedIn(true)}>
+            Login
+          </button>
+        )}
+      </div>
+```
+
+
+
+
+
 
