@@ -161,13 +161,9 @@ Use Cases:-
 ```html
       <div>
         {isLoggedIn ? (
-          <button onClick={() => setIsLoggedIn(false)}>
-            Logout
-          </button>
+          <button onClick={() => setIsLoggedIn(false)}>Logout</button>
         ) : (
-          <button onClick={() => setIsLoggedIn(true)}>
-            Login
-          </button>
+          <button onClick={() => setIsLoggedIn(true)}>Login</button>
         )}
       </div>
 ```
