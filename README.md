@@ -158,7 +158,7 @@ Use Cases:-
 1. Login / Logout Button 
 2. Show dashboard only if logged in
 
-```jsx
+```html
       <div>
         {isLoggedIn ? (
           <button onClick={() => setIsLoggedIn(false)}>
