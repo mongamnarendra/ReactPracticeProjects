@@ -9,13 +9,14 @@ function App() {
   const [task, setTask] = useState('');
   const navigate = useNavigate();
 
+  const fetchTasks = async () => {
+    const tasks = await getAllTasks();
+    setTaskList(tasks);
+  };
+
   useEffect(() => {
-    const fetchTasks = async () => {
-      const tasks = await getAllTasks();
-      setTaskList(tasks);
-    };
-    fetchTasks();
-  }, []); 
+    fetchTasks(); // initial load
+  }, []);
 
   const handleSubmit = async () => {
     await addTask(task);
@@ -34,9 +35,9 @@ function App() {
     setTaskList(tasks);
   };
 
-  const statusChange = (id) => {
+  const statusChange = async (id) => {
     changeStatus(id)
-    fetchTasks();
+    await fetchTasks();
   }
 
   return (
