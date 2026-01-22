@@ -40,3 +40,13 @@
 .read-the-docs {
   color: #888;
 }
+
+
+.completed-task {
+  background-color: #c8f7c5; 
+}
+
+.completed-task td {
+  text-decoration: line-through;
+  color: #2e7d32;
+}

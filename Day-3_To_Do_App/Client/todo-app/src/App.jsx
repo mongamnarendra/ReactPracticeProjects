@@ -1,10 +1,13 @@
 import { useEffect, useState } from 'react';
+import { Routes, Route, useNavigate } from 'react-router-dom'; // ✅ imports
 import './App.css';
-import { addTask, getAllTasks } from './APIS/controller';
+import { addTask, changeStatus, deleteTask, getAllTasks } from './APIS/controller';
+import UpdateTask from './UpdateTask'; // ✅ make sure file exists
 
 function App() {
   const [taskList, setTaskList] = useState([]);
   const [task, setTask] = useState('');
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchTasks = async () => {
@@ -12,8 +15,7 @@ function App() {
       setTaskList(tasks);
     };
     fetchTasks();
-  }, []);
-
+  }, []); 
 
   const handleSubmit = async () => {
     await addTask(task);
@@ -22,16 +24,73 @@ function App() {
     setTask('');
   };
 
-  return (
-    <div>
-      <h1>Todo</h1>
-      <input value={task} onChange={(e) => setTask(e.target.value)} />
-      <button onClick={handleSubmit}>Add task</button>
+  const updateTaskById = (id) => {
+    navigate(`/update/${id}`);
+  };
 
-      {Array.isArray(taskList) && taskList.map((task) => {
-        return <div key={task._id}>{task.title}</div>; 
-      })}
-    </div>
+  const handleDeleteTask = async (taskId) => {
+    await deleteTask(taskId);
+    const tasks = await getAllTasks();
+    setTaskList(tasks);
+  };
+
+  const statusChange = (id) => {
+    changeStatus(id)
+    fetchTasks();
+  }
+
+  return (
+    <Routes>
+      {/* Home Page */}
+      <Route
+        path="/"
+        element={
+          <div>
+            <h1>Todo</h1>
+            <input
+              value={task}
+              onChange={(e) => setTask(e.target.value)}
+            />
+            <button onClick={handleSubmit}>Add task</button>
+
+            <table>
+              <thead>
+                <tr>
+                  <th>Task</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {taskList.map((task) => (
+                  <tr
+                    key={task._id}
+                    className={task.status ? "completed-task" : ""}
+                  >
+                    <td>{task.title}</td>
+                    <td>
+                      <button onClick={() => handleDeleteTask(task._id)}>
+                        Delete
+                      </button>
+                      <button onClick={() => updateTaskById(task._id)}>
+                        Update
+                      </button>
+                      <button onClick={() => statusChange(task._id)}>
+                        Completed
+                      </button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+
+            </table>
+          </div>
+        }
+      />
+
+      {/* Update Page */}
+      <Route path="/update/:id" element={<UpdateTask />} />
+    </Routes>
   );
 }
 

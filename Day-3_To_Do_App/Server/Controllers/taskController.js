@@ -35,7 +35,7 @@ const getAllTasks = async (req, res) => {
 
 const getById = async (req, res) => {
     try {
-        const id  = req.params.id;
+        const id = req.params.id;
         const task = await Task.findById(id);
         res.status(200).json({
             success: true,
@@ -53,13 +53,13 @@ const getById = async (req, res) => {
 const updateTask = async (req, res) => {
     try {
         const { id } = req.params;
-        const task = await Task.findByIdAndUpdate(id, req.body,{new:true});
+        const task = await Task.findByIdAndUpdate(id, req.body, { new: true });
         res.status(200).json({
             success: true,
             task: task
         })
     }
-     catch (err) {
+    catch (err) {
         res.status(500).json({
             success: false,
             message: err.message
@@ -67,7 +67,7 @@ const updateTask = async (req, res) => {
     }
 }
 
-const deleteTask = async(req,res) =>{
+const deleteTask = async (req, res) => {
     try {
         const id = req.params.id;
         const task = await Task.findByIdAndDelete(id);
@@ -84,10 +84,29 @@ const deleteTask = async(req,res) =>{
     }
 }
 
+const statusChange = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const task = await Task.findByIdAndUpdate(id, req.body, { new: true })
+        res.status(200).json({
+            success: true,
+            task
+        })
+        
+    }
+    catch (err) {
+        res.status(500).json({
+            success: false,
+            message: err.message
+        })
+    }
+}
+
 module.exports = {
     addTask,
     getAllTasks,
     getById,
     updateTask,
-    deleteTask
+    deleteTask,
+    statusChange
 }
