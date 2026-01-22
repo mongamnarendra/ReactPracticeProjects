@@ -168,8 +168,148 @@ Use Cases:-
       </div>
 ```
 
+## 🚀 Day-3 (22-01-2026) - To Do Application (using Nodejs & Expressjs)
+
+Today i encountered a naming convention error while creating the react vite app
+
+if we use .map() in rendering the array for a async data then errors will araise. so 
+use `{Arrays.isArray(taskList) && taskList.map()}`
 
 
 
+### API Documentation
 
+#### Base URL
+```
+http://localhost:3000/api/v1
+```
+
+#### Data Models
+
+**Task Object**
+```json
+{
+  "_id": "ObjectId",
+  "title": "string",
+  "status": "boolean (default: false)",
+  "__v": "number"
+}
+```
+
+**Fields:**
+- `_id`: Unique identifier for the task (MongoDB ObjectId)
+- `title`: Task title/description (required)
+- `status`: Completion status of the task (true = completed, false = pending)
+- `__v`: Version field (managed by MongoDB)
+
+---
+
+#### Endpoints
+
+##### 1. Create a New Task
+**Endpoint:** `POST /add-task`
+
+**Description:** Creates a new task in the database.
+
+**Request Body:**
+```json
+{
+  "title": "string (required)",
+  "status": "boolean (optional, default: false)"
+}
+```
+
+---
+
+##### 2. Get All Tasks
+**Endpoint:** `GET /tasks`
+
+**Description:** Retrieves all tasks from the database.
+
+
+
+##### 3. Get Task by ID
+**Endpoint:** `GET /task/:id`
+
+**Description:** Retrieves a specific task by its ID.
+
+**Request Parameters:**
+- `id` (URL parameter): MongoDB ObjectId of the task
+
+---
+
+##### 4. Update Task
+**Endpoint:** `PUT /update/:id`
+
+**Description:** Updates an existing task by its ID.
+
+**Request Parameters:**
+- `id` (URL parameter): MongoDB ObjectId of the task
+
+
+---
+
+##### 5. Delete Task
+**Endpoint:** `DELETE /delete-task/:id`
+
+**Description:** Deletes a task from the database.
+
+**Request Parameters:**
+- `id` (URL parameter): MongoDB ObjectId of the task
+
+
+---
+
+#### HTTP Status Codes
+
+| Status Code | Description |
+|-------------|-------------|
+| 200 | OK - Request successful (GET, PUT, DELETE) |
+| 201 | Created - Resource successfully created (POST) |
+| 500 | Internal Server Error - Server-side error |
+
+---
+
+#### Usage Examples
+
+**Add a task (JavaScript/Fetch):**
+```javascript
+fetch('http://localhost:3000/api/v1/add-task', {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({
+    title: 'Learn React',
+    status: false
+  })
+})
+.then(res => res.json())
+.then(data => console.log(data));
+```
+
+**Get all tasks:**
+```javascript
+fetch('http://localhost:3000/api/v1/tasks')
+  .then(res => res.json())
+  .then(data => console.log(data.tasks));
+```
+
+**Update a task:**
+```javascript
+fetch('http://localhost:3000/api/v1/update/507f1f77bcf86cd799439011', {
+  method: 'PUT',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ status: true })
+})
+.then(res => res.json())
+.then(data => console.log(data));
+```
+
+**Delete a task:**
+```javascript
+fetch('http://localhost:3000/api/v1/delete-task/507f1f77bcf86cd799439011', {
+  method: 'DELETE'
+})
+.then(res => res.json())
+.then(data => console.log(data));
+```
 
