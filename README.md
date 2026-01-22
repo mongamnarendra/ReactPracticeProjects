@@ -313,3 +313,9 @@ fetch('http://localhost:3000/api/v1/delete-task/507f1f77bcf86cd799439011', {
 .then(data => console.log(data));
 ```
 
+### Client Side
+Features Implemented:
+1. Add Task
+2. View All Tasks
+3. Update Task Status & Task Title
+4. Delete Task
