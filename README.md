@@ -319,3 +319,179 @@ Features Implemented:
 2. View All Tasks
 3. Update Task Status & Task Title
 4. Delete Task
+
+
+
+## 🚀 Day-4 (23-01-2026) - 
+### Topics Covered:
+1. React Router Dom
+2. Nested Routing
+3. URL Parameters
+
+### React Router Dom
+React Router Dom is a library used to handle routing in React applications. It allows you to create single-page applications with navigation without refreshing the page.
+### Installation
+To use React Router Dom, you need to install it via npm or yarn:
+```bash
+npm install react-router-dom
+```
+### Basic Setup
+To set up routing in your React application, you need to wrap your app with the `BrowserRouter` component and define routes using the `Routes` and `Route` components.
+```jsx  
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';  
+import Home from './Home';
+import About from './About';
+import Contact from './Contact';
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/contact" element={<Contact />} />
+      </Routes>
+    </Router>
+  );
+}
+
+export default App;
+```
+
+### Nested Routing
+Nested routing allows you to have routes within routes. This is useful for creating complex navigation structures.
+
+**Example:**
+```jsx
+<Routes>
+  <Route path="/dashboard" element={<Dashboard />}>
+    <Route path="profile" element={<Profile />} />
+    <Route path="settings" element={<Settings />} />
+  </Route>
+</Routes>
+```
+
+To display nested routes, use the `<Outlet />` component in the parent component:
+```jsx
+import { Outlet } from 'react-router-dom';
+
+function Dashboard() {
+  return (
+    <div>
+      <h1>Dashboard</h1>
+      <Outlet />
+    </div>
+  );
+}
+```
+
+### URL Parameters
+URL parameters allow you to pass dynamic values in the URL and access them in your components.
+
+**Defining URL Parameters:**
+```jsx
+<Route path="/user/:id" element={<UserProfile />} />
+```
+
+**Accessing URL Parameters:**
+```jsx
+import { useParams } from 'react-router-dom';
+
+function UserProfile() {
+  const { id } = useParams();
+  
+  return (
+    <div>
+      <h1>User ID: {id}</h1>
+    </div>
+  );
+}
+```
+
+### Navigation
+Use the `<Link>` component or `useNavigate` hook for navigation:
+
+**Using Link:**
+```jsx
+import { Link } from 'react-router-dom';
+
+<Link to="/about">About</Link>
+```
+
+**Using useNavigate Hook:**
+```jsx
+import { useNavigate } from 'react-router-dom';
+
+function Home() {
+  const navigate = useNavigate();
+  
+  return (
+    <button onClick={() => navigate('/about')}>
+      Go to About
+    </button>
+  );
+}
+```
+
+---
+
+## 📚 Key Learning Concepts
+
+### React Hooks Used:
+- **useState** - Manage component state
+- **useRef** - Access DOM elements directly
+- **useParams** - Extract URL parameters
+- **useNavigate** - Programmatic navigation
+
+### Best Practices:
+1. Always use functional components with hooks
+2. Use destructuring for props
+3. Add key prop when rendering lists
+4. Never modify state directly
+5. Use .map() for rendering arrays, not .forEach()
+6. Keep components reusable and single-responsibility
+
+### Project Structure:
+```
+React/
+├── Day-1/          (React Basics - Components, Props, useState)
+├── Day-2/          (Forms - Controlled & Uncontrolled)
+├── Day-3/          (Full-stack Todo App with Node.js & MongoDB)
+│   ├── Client/     (React Frontend)
+│   └── Server/     (Node.js Express Backend)
+├── Day-4/          (React Router - Routing & Navigation)
+└── README.md       (This file)
+```
+
+---
+
+## 🎯 What You'll Learn
+
+- ✅ React fundamentals and component architecture
+- ✅ State management with hooks
+- ✅ Form handling (controlled & uncontrolled)
+- ✅ API integration with Node.js/Express backend
+- ✅ Client-server communication with Fetch API
+- ✅ Routing and navigation in single-page applications
+- ✅ Building real-world applications
+
+---
+
+## 🛠️ Technologies Used
+
+- **Frontend:** React, Vite, React Router DOM
+- **Backend:** Node.js, Express.js
+- **Database:** MongoDB
+- **Tools:** Fetch API, npm/yarn
+
+---
+
+## 📝 Notes
+
+- This is a daily practice repository for learning React
+- Each day covers specific concepts and builds on previous knowledge
+- Practical projects included to reinforce learning
+- Code examples are provided for reference and practice
+
+---
+
+**Last Updated:** January 23, 2026
