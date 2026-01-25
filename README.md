@@ -499,6 +499,7 @@ React/
 1. Search Filter Implementation
 2. Input Validation
 3. useContext()
+4. Redux
 
 ### Search Filter Implementation:-
 
@@ -545,4 +546,38 @@ import ThemeContext from "./ThemeContext";
 const theme = useContext(ThemeContext);
   ```
 
+
+
+### Redux:-
+- i used redux to manage the state of the application
+- redux is a global state management library that helps to manage the state of the application in a predictable way
+### steps to create redux store:-
+ 1. install redux and react-redux
+```bash 
+npm install redux react-redux
+```
+ 2. create a store using createStore() method
+```js
+import { createStore } from "redux";
+import rootReducer from "./reducers";
+const store = createStore(rootReducer);
+export default store;
+```
+ 3. wrap the component with Provider and pass the store
+```js
+import { Provider } from "react-redux";
+import store from "./store";
+<Provider store={store}>
+         <App />
+</Provider>
+```
+ 4. use useSelector and useDispatch hooks to access the state and dispatch actions
+```js 
+import { useSelector, useDispatch } from "react-redux";
+const count = useSelector((state) => state.count);
+const dispatch = useDispatch();
+dispatch({ type: "INCREMENT" });
+```
+### Note:-
+- Redux is used for complex state management and when the state needs to be shared across multiple components   
 
