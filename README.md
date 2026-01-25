@@ -494,4 +494,16 @@ React/
 
 ---
 
-**Last Updated:** January 23, 2026
+## 🚀 Day-5 (24-01-2026) - Search Filter
+### Topics Covered:
+1. Search Filter Implementation
+
+
+### Search Filter Implementation:-
+
+- i used filter method to filter the names based on the input value
+```js
+  const filteredData = names.filter((name)=>{
+      return name.toLowerCase().includes(inputValue.toLowerCase())
+  })
+```
