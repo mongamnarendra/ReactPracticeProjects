@@ -498,7 +498,7 @@ React/
 ### Topics Covered:
 1. Search Filter Implementation
 2. Input Validation
-
+3. useContext()
 
 ### Search Filter Implementation:-
 
@@ -521,3 +521,28 @@ React/
     }
   }
 ```
+
+### useContext():-
+- i created a ThemeContext to manage the theme of the application
+- i used useContext hook to consume the context value in the Child component
+### steps to create context:-
+ 1. create a context using createContext() method
+```js
+import { createContext } from "react";
+const ThemeContext = createContext();
+export default ThemeContext;
+```
+ 2. wrap the component with ThemeContext.Provider and pass the value
+```js
+<ThemeContext.Provider value={toggleState}>
+         <Child />  
+</ThemeContext.Provider>
+```
+  3. use useContext hook to consume the context value in the Child component
+  ```js
+import { useContext } from "react";
+import ThemeContext from "./ThemeContext";  
+const theme = useContext(ThemeContext);
+  ```
+
+
