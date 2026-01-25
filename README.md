@@ -497,6 +497,7 @@ React/
 ## 🚀 Day-5 (24-01-2026) - Search Filter
 ### Topics Covered:
 1. Search Filter Implementation
+2. Input Validation
 
 
 ### Search Filter Implementation:-
@@ -506,4 +507,17 @@ React/
   const filteredData = names.filter((name)=>{
       return name.toLowerCase().includes(inputValue.toLowerCase())
   })
+```
+
+### Input Validation:-
+- i added a validation to check if the input value is empty or not
+```js
+  const handleSubmit = (e)=>{
+    if(inputValue.trim() === ''){
+      setError('Input cannot be empty');
+    }
+    else {
+      setError('');
+    }
+  }
 ```
